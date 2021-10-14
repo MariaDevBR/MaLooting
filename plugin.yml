@@ -1,0 +1,8 @@
+name: MaLooting
+version: 1.0.0
+main: com.maria.looting.Main
+author: [Maria_BR]
+commands:
+  looting:
+  ma:
+    aliases: [maria, mariadev, mariaplugins]

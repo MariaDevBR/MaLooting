@@ -1,0 +1,37 @@
+# Qualquer bug, chame a Desenvolvedora no Discord
+# Discord: Maria_BR#4870
+
+# Permissao: "malooting.admin" (/looting give & /ma reload)
+
+Looting:
+  Item:
+    Nome: '&6&lLOOTING'
+    Lore:
+      - ''
+      - '&7Clique em sua'
+      - '&fespada &7com este item'
+      - '&7e adicione &fLooting &7nela.'
+      - ''
+      - '&fNível: &e{level}'
+      - ''
+    Material: 'BOOK:0'
+    Glow: true
+  Limite: 1E9 # Caso queira ilimitado, coloque -1
+  
+Extras:
+  Title ativar: true
+  Sons ativar: true
+  Title:
+    Linha1: '&6&lLOOTING'
+    Linha2: '&e+{leveis} &7Níveis de Looting'
+  Sons:
+    Utilizou: 'LEVEL_UP'
+    Limite atingido: 'NOTE_PLING'
+
+Mensagens:
+  Utilizou: '&6&lLOOTING &8» &7Você adicionou &e+{leveis} &fníveis &7de Looting em seu item. &8(&a{level}/&c{maxlevel}&8)'
+  Limite atingido: '&6&lLOOTING &8» &cLimite de &fLooting &catingido! &8(&e{maxlevel}&8)'
+  Comando incompleto: '&6&lLOOTING &8» &cUtilize: /looting give <player> <level>'
+  Player off: '&6&lLOOTING &8» &cEste player não está online.'
+  Numero invalido: '&6&lLOOTING &8» &cDigite um número válido.'
+  Sem permissao: '&fComando desconhecido.'
