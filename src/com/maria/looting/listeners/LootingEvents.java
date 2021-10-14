@@ -5,8 +5,8 @@ import org.bukkit.Material;
 import org.bukkit.craftbukkit.v1_8_R3.inventory.CraftItemStack;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.inventory.ItemStack;
 
@@ -33,16 +33,16 @@ public class LootingEvents implements Listener {
 
 		Bukkit.getPluginManager().registerEvents(this, main);
 
+		lootingAPI = main.getLootingAPI();
+
 		lootingManager = main.getLootingManager();
 
 		messages = main.getMessages();
 	}
 
 	@SuppressWarnings("deprecation")
-	@EventHandler(priority = EventPriority.LOW)
+	@EventHandler
 	void playerUseLooting(InventoryClickEvent e) {
-		lootingAPI = main.getLootingAPI();
-
 		Player p = (Player) e.getWhoClicked();
 
 		ItemStack cursor = e.getCursor();
@@ -54,9 +54,6 @@ public class LootingEvents implements Listener {
 		net.minecraft.server.v1_8_R3.ItemStack nmsCursor = CraftItemStack.asNMSCopy(cursor);
 		NBTTagCompound cursorCompound = nmsCursor.hasTag() ? nmsCursor.getTag() : new NBTTagCompound();
 
-		if (!cursor.isSimilar(main.getGiveLootingManager().getLootingItem()))
-			return;
-
 		if (!item.getType().name().toLowerCase().contains("sword"))
 			return;
 
@@ -66,11 +63,12 @@ public class LootingEvents implements Listener {
 		net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
 		NBTTagCompound itemCompound = nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound();
 
+		double levelLooting = lootingAPI.getLevel(cursor);
+
+		levelLooting *= cursor.getAmount();
+
 		if (lootingManager.limitReached(p, item, cursor))
 			return;
-
-		double levelLooting = lootingAPI.getLevel(cursor);
-		levelLooting *= cursor.getAmount();
 
 		if (itemCompound.hasKey("Looting")) {
 			lootingManager.lootingUsed(p, cursor, item);
@@ -90,6 +88,18 @@ public class LootingEvents implements Listener {
 
 		p.sendMessage(messages.used.replace("{leveis}", Format.format(levelLooting)).replace("{level}",
 				Format.format(lootingAPI.getTotalLevel(cursor, item))));
+	}
+
+	@EventHandler
+	void blockPlace(BlockPlaceEvent e) {
+		Player p = e.getPlayer();
+		ItemStack item = p.getItemInHand();
+
+		net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
+		NBTTagCompound itemCompound = nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound();
+
+		if (itemCompound.hasKey("Looting"))
+			e.setCancelled(true);
 	}
 
 }

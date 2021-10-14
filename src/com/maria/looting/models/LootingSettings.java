@@ -13,11 +13,13 @@ public class LootingSettings {
 
 	private FileConfiguration config;
 
+	public String skull;
 	public String name;
 	public List<String> lore;
 	public Material material;
 	public double limit;
 	public int data;
+	public boolean customSkull;
 	public boolean glow;
 
 	public LootingSettings(Main main) {
@@ -25,8 +27,10 @@ public class LootingSettings {
 
 		config = main.getConfig();
 
+		customSkull = config.getBoolean("Looting.Item.Custom Skull");
 		glow = config.getBoolean("Looting.Item.Glow");
 
+		skull = config.getString("Looting.Item.Skull");
 		name = config.getString("Looting.Item.Nome").replace("&", "§");
 		lore = config.getStringList("Looting.Item.Lore");
 		material = Material.valueOf(config.getString("Looting.Item.Material").split(":")[0]);

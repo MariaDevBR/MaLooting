@@ -31,6 +31,7 @@ public class MaCommand implements CommandExecutor {
 		}
 		if (a[0].equalsIgnoreCase("reload") || a[0].equalsIgnoreCase("rl")) {
 			Bukkit.getPluginManager().disablePlugin(main);
+			main.onLoad();
 			Bukkit.getPluginManager().enablePlugin(main);
 
 			s.sendMessage("§6§lLOOTING §8» §aPlugin recarregado com sucesso.");

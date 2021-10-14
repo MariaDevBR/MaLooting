@@ -9,6 +9,7 @@ import org.bukkit.entity.Player;
 import com.maria.looting.Main;
 import com.maria.looting.managers.GiveLootingManager;
 import com.maria.looting.models.Messages;
+import com.maria.looting.utils.Format;
 
 public class LootingCommand implements CommandExecutor {
 
@@ -47,7 +48,23 @@ public class LootingCommand implements CommandExecutor {
 				return true;
 
 			}
-			giveLootingManager.giveLootingPlayer(s, target, a);
+			double amount = 0.0;
+			try {
+				amount = Double.parseDouble(a[2]);
+
+				if (amount <= 0) {
+					s.sendMessage("§6§lLOOTING §8» §cO nível tem que ser maior que §70§c.");
+					return true;
+
+				}
+			} catch (NumberFormatException e) {
+				s.sendMessage(messages.invalidNumber);
+				return true;
+
+			}
+			giveLootingManager.giveLootingPlayer(target, amount);
+			s.sendMessage("§6§lLOOTING §8» §7Você deu §f1 §7livro de Looting com §e" + Format.format(amount)
+					+ " §fleveis §7para §e" + target.getName() + "§7.");
 
 		}
 		return false;

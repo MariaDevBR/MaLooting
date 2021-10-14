@@ -14,6 +14,8 @@ Looting:
       - ''
       - '&fNível: &e{level}'
       - ''
+    Custom Skull: true # Coloque false para utilizar o Material
+    Skull: 'http://textures.minecraft.net/texture/fc02695cb3fc5e3b81138a0f06a8881ac32c6fc623c78d855ff7855fc69614ee'
     Material: 'BOOK:0'
     Glow: true
   Limite: 1E9 # Caso queira ilimitado, coloque -1
