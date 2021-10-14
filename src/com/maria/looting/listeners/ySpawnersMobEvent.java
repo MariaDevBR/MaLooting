@@ -5,11 +5,11 @@ import org.bukkit.event.Listener;
 
 import com.maria.looting.Main;
 
-public class ySpawnersEvent implements Listener {
+public class ySpawnersMobEvent implements Listener {
 
 	protected Main main;
 
-	public ySpawnersEvent(Main main) {
+	public ySpawnersMobEvent(Main main) {
 		this.main = main;
 
 		Bukkit.getPluginManager().registerEvents(this, main);

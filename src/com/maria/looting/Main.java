@@ -8,10 +8,11 @@ import com.maria.looting.api.LootingAPI;
 import com.maria.looting.commands.LootingCommand;
 import com.maria.looting.commands.MaCommand;
 import com.maria.looting.hook.Hooks;
-import com.maria.looting.listeners.AtlasEvent;
+import com.maria.looting.listeners.AtlasMobEvent;
+import com.maria.looting.listeners.DefaultMobEvent;
 import com.maria.looting.listeners.LootingEvents;
-import com.maria.looting.listeners.StormEvent;
-import com.maria.looting.listeners.ySpawnersEvent;
+import com.maria.looting.listeners.StormMobEvent;
+import com.maria.looting.listeners.ySpawnersMobEvent;
 import com.maria.looting.managers.GiveLootingManager;
 import com.maria.looting.managers.LootingManager;
 import com.maria.looting.models.Extras;
@@ -43,15 +44,16 @@ public class Main extends JavaPlugin {
 		new MaCommand(this);
 		new LootingCommand(this);
 		new LootingEvents(this);
+		new DefaultMobEvent(this);
 
 		if (Hooks.hookAtlasSpawners())
-			new AtlasEvent(this);
+			new AtlasMobEvent(this);
 
 		else if (Hooks.hookStormSpawners())
-			new StormEvent(this);
-		
+			new StormMobEvent(this);
+
 		else if (Hooks.hookYSpawners())
-			new ySpawnersEvent(this);
+			new ySpawnersMobEvent(this);
 	}
 
 	private void loadingObjects() {
