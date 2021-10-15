@@ -5,6 +5,7 @@ import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import com.maria.looting.api.LootingAPI;
+import com.maria.looting.commands.ConvertLootingCommand;
 import com.maria.looting.commands.LootingCommand;
 import com.maria.looting.commands.MaCommand;
 import com.maria.looting.hook.Hooks;
@@ -43,6 +44,7 @@ public class Main extends JavaPlugin {
 	private void registerFunctions() {
 		new MaCommand(this);
 		new LootingCommand(this);
+		new ConvertLootingCommand(this);
 		new LootingEvents(this);
 		new DefaultMobEvent(this);
 

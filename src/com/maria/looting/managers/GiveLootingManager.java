@@ -20,6 +20,8 @@ public class GiveLootingManager {
 
 	protected Main main;
 
+	private LootingManager lootingManager;
+
 	private LootingSettings lootingSettings;
 
 	public GiveLootingManager(Main main) {
@@ -65,6 +67,20 @@ public class GiveLootingManager {
 			target.getInventory().addItem(itemBuilded);
 		}
 
+	}
+
+	public void convertLooting(Player p) {
+		lootingManager = main.getLootingManager();
+
+		ItemStack item = p.getItemInHand();
+
+		if (lootingManager.isSword(p, item))
+			return;
+
+		if (lootingManager.hasLooting(p, item))
+			return;
+
+		lootingManager.convertedLooting(p, item);
 	}
 
 }

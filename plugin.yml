@@ -1,8 +1,11 @@
 name: MaLooting
-version: 1.0.3
+version: 1.0.4
 main: com.maria.looting.Main
 author: [Maria_BR]
 commands:
   looting:
+    aliases: [pilhagem]
+  converterlooting:
+    aliases: [lootingconvert, converterl, convertlooting, convertl, lconvert, trocarlooting]
   ma:
     aliases: [maria, mariadev, mariaplugins]

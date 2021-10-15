@@ -21,6 +21,10 @@ public class Messages {
 	public String used;
 	public String limitReached;
 
+	public String swordInHand;
+	public String noLootingOnSword;
+	public String lootingConverted;
+
 	public Messages(Main main) {
 		this.main = main;
 
@@ -35,9 +39,12 @@ public class Messages {
 
 		used = config.getString("Mensagens.Utilizou").replace("&", "§").replace("{maxlevel}",
 				Format.format(lootingSettings.limit));
-
 		limitReached = config.getString("Mensagens.Limite atingido").replace("&", "§").replace("{maxlevel}",
 				Format.format(lootingSettings.limit));
+
+		swordInHand = config.getString("Mensagens.Mao vazia").replace("&", "§");
+		noLootingOnSword = config.getString("Mensagens.Sem looting").replace("&", "§");
+		lootingConverted = config.getString("Mensagens.Looting convertida").replace("&", "§");
 	}
 
 }

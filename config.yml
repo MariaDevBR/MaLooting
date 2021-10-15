@@ -1,7 +1,10 @@
 # Qualquer bug, chame a Desenvolvedora no Discord
 # Discord: Maria_BR#4870
 
-# Permissao: "malooting.admin" (/looting give & /ma reload)
+# Permissoes 
+
+# "malooting.admin" (/looting give & /ma reload)
+# "malooting.converter" (/converterlooting)
 
 Looting:
   Item:
@@ -33,6 +36,9 @@ Extras:
 Mensagens:
   Utilizou: '&6&lLOOTING &8» &7Você adicionou &e+{leveis} &fníveis &7de Looting em seu item. &8(&a{level}/&c{maxlevel}&8)'
   Limite atingido: '&6&lLOOTING &8» &cLimite de &fLooting &catingido! &8(&e{maxlevel}&8)'
+  Mao vazia: '&6&lLOOTING &8» &cVocê precisa estar segurando uma espada.'
+  Sem looting: '&6&lLOOTING &8» &cEstá espada não tem &fLooting&c.'
+  Looting convertida: '&6&lLOOTING &8» &7Você converteu &a{leveis} &fLeveis &7de Looting em 1 livro.'
   Comando incompleto: '&6&lLOOTING &8» &cUtilize: /looting give <player> <level>'
   Player off: '&6&lLOOTING &8» &cEste player não está online.'
   Numero invalido: '&6&lLOOTING &8» &cDigite um número válido.'
