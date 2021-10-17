@@ -30,13 +30,13 @@ public class LootingManager {
 		this.main = main;
 
 		lootingAPI = main.getLootingAPI();
+		lootingSettings = main.getLootingSettings();
+		messages = main.getMessages();
+		extras = main.getExtras();
 	}
 
 	@SuppressWarnings("deprecation")
 	public void lootingUsed(Player p, ItemStack cursor, ItemStack item) {
-		lootingSettings = main.getLootingSettings();
-		extras = main.getExtras();
-
 		double levelBook = lootingAPI.getLevel(cursor);
 		levelBook *= cursor.getAmount();
 
@@ -49,10 +49,6 @@ public class LootingManager {
 	}
 
 	public boolean limitReached(Player p, ItemStack item, ItemStack cursor) {
-		lootingSettings = main.getLootingSettings();
-		messages = main.getMessages();
-		extras = main.getExtras();
-
 		double limit = lootingSettings.limit;
 
 		double level = lootingAPI.getTotalLevel(item, cursor);
@@ -69,9 +65,6 @@ public class LootingManager {
 	}
 
 	public void convertedLooting(Player p, ItemStack item) {
-		giveLootingManager = main.getGiveLootingManager();
-		messages = main.getMessages();
-
 		net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
 		NBTTagCompound itemCompound = nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound();
 
@@ -79,7 +72,7 @@ public class LootingManager {
 		double levelLooting = lootingAPI.getLevel(item);
 
 		double totalLevel = levelLooting + levelDefaultLooting;
-		
+
 		if (item.containsEnchantment(Enchantment.LOOT_BONUS_MOBS))
 			item.removeEnchantment(Enchantment.LOOT_BONUS_MOBS);
 
@@ -92,8 +85,6 @@ public class LootingManager {
 	}
 
 	public boolean isSword(Player p, ItemStack item) {
-		messages = main.getMessages();
-
 		if (item == null || !item.getType().name().toLowerCase().contains("sword")) {
 			p.sendMessage(messages.swordInHand);
 			return true;
@@ -103,8 +94,6 @@ public class LootingManager {
 	}
 
 	public boolean hasLooting(Player p, ItemStack item) {
-		messages = main.getMessages();
-
 		net.minecraft.server.v1_8_R3.ItemStack nmsItem = CraftItemStack.asNMSCopy(item);
 		NBTTagCompound itemCompound = nmsItem.hasTag() ? nmsItem.getTag() : new NBTTagCompound();
 

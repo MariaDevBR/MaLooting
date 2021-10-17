@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>com.maria.looting</groupId>
 	<artifactId>MaLooting</artifactId>
-	<version>1.0-SNAPSHOT</version>
+	<version>1.0.5-SNAPSHOT</version>
 	<name>MaLooting</name>
 
 	<repositories>
@@ -45,21 +45,12 @@
 			<scope>system</scope>
 			<systemPath>C:\Users\PC\Desktop\API\Spawners\StormSpawnersAPI.jar</systemPath>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>yStore</groupId>
-			<artifactId>yspawners</artifactId>
-			<version>1.4.1</version>
-			<scope>system</scope>
-			<systemPath>C:\Users\PC\Desktop\API\yStore\ySpawners-1.4.1.jar</systemPath>
-		</dependency>
-
-		<dependency>
-			<groupId>yStore</groupId>
-			<artifactId>yspawnersv2</artifactId>
-			<version>1.1.3</version>
-			<scope>system</scope>
-			<systemPath>C:\Users\PC\Desktop\API\yStore\ySpawnersV2-1.1.3.jar</systemPath>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.22</version>
+			<scope>provided</scope>
 		</dependency>
 	</dependencies>
 

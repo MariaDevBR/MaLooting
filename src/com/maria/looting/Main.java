@@ -12,10 +12,11 @@ import com.maria.looting.hook.Hooks;
 import com.maria.looting.listeners.AtlasMobEvent;
 import com.maria.looting.listeners.DefaultMobEvent;
 import com.maria.looting.listeners.LootingEvents;
+import com.maria.looting.listeners.StackLootingEvent;
 import com.maria.looting.listeners.StormMobEvent;
-import com.maria.looting.listeners.ySpawnersMobEvent;
 import com.maria.looting.managers.GiveLootingManager;
 import com.maria.looting.managers.LootingManager;
+import com.maria.looting.managers.StackLootingManager;
 import com.maria.looting.models.Extras;
 import com.maria.looting.models.LootingSettings;
 import com.maria.looting.models.Messages;
@@ -23,6 +24,7 @@ import com.maria.looting.models.Messages;
 public class Main extends JavaPlugin {
 
 	private GiveLootingManager giveLootingManager;
+	private StackLootingManager stackLootingManager;
 
 	private LootingAPI lootingAPI;
 
@@ -46,6 +48,7 @@ public class Main extends JavaPlugin {
 		new LootingCommand(this);
 		new ConvertLootingCommand(this);
 		new LootingEvents(this);
+		new StackLootingEvent(this);
 		new DefaultMobEvent(this);
 
 		if (Hooks.hookAtlasSpawners())
@@ -54,8 +57,11 @@ public class Main extends JavaPlugin {
 		else if (Hooks.hookStormSpawners())
 			new StormMobEvent(this);
 
-		else if (Hooks.hookYSpawners())
-			new ySpawnersMobEvent(this);
+		else if (Hooks.hookYSpawners()) {
+
+		} else if (Hooks.hookYSpawnersV2()) {
+		}
+
 	}
 
 	private void loadingObjects() {
@@ -63,14 +69,20 @@ public class Main extends JavaPlugin {
 
 		lootingAPI = new LootingAPI(this);
 
-		lootingManager = new LootingManager(this);
 		lootingSettings = new LootingSettings(this);
 		messages = new Messages(this);
 		extras = new Extras(this);
+
+		lootingManager = new LootingManager(this);
+		stackLootingManager = new StackLootingManager(this);
 	}
 
 	public GiveLootingManager getGiveLootingManager() {
 		return giveLootingManager;
+	}
+
+	public StackLootingManager getStackLootingManager() {
+		return stackLootingManager;
 	}
 
 	public LootingAPI getLootingAPI() {

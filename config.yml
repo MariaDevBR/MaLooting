@@ -5,6 +5,7 @@
 
 # "malooting.admin" (/looting give & /ma reload)
 # "malooting.converter" (/converterlooting)
+# "malooting.stackar" (Shift + Botao Direto para stackar)
 
 Looting:
   Item:
@@ -24,8 +25,10 @@ Looting:
   Limite: 1E9 # Caso queira ilimitado, coloque -1
   
 Extras:
+  Stack mensagem: true # false para nao enviar mensagem caso nao tenha permissao
   Title ativar: true
   Sons ativar: true
+  Sem permissao: '&6&lLOOTING &8» &cVocê não tem permissão para stackar &fLootings&c.'
   Title:
     Linha1: '&6&lLOOTING'
     Linha2: '&e+{leveis} &7Níveis de Looting'
@@ -36,6 +39,7 @@ Extras:
 Mensagens:
   Utilizou: '&6&lLOOTING &8» &7Você adicionou &e+{leveis} &fníveis &7de Looting em seu item. &8(&a{level}/&c{maxlevel}&8)'
   Limite atingido: '&6&lLOOTING &8» &cLimite de &fLooting &catingido! &8(&e{maxlevel}&8)'
+  Stackado: '&6&lLOOTING &8» &7Você stackou &a{leveis} &fLeveis &7de Looting em 1 item.'
   Mao vazia: '&6&lLOOTING &8» &cVocê precisa estar segurando uma espada.'
   Sem looting: '&6&lLOOTING &8» &cEstá espada não tem &fLooting&c.'
   Looting convertida: '&6&lLOOTING &8» &7Você converteu &a{leveis} &fLeveis &7de Looting em 1 livro.'

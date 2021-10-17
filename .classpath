@@ -16,5 +16,7 @@
 			<attribute name="maven.pomderived" value="true"/>
 		</attributes>
 	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/PC/Desktop/API/yStore/ySpawners_API.jar"/>
+	<classpathentry kind="lib" path="C:/Users/PC/Desktop/API/yStore/ySpawners-1.4.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>

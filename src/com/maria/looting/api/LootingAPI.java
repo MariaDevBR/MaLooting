@@ -54,7 +54,7 @@ public class LootingAPI {
 	public double getTotalLevel(ItemStack cursor, ItemStack item) {
 		double levelCursor = getLevel(cursor);
 		levelCursor *= cursor.getAmount();
-
+		
 		return levelCursor + getLevel(item);
 	}
 
