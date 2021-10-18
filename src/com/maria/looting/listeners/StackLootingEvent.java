@@ -35,9 +35,6 @@ public class StackLootingEvent implements Listener {
 		Action action = e.getAction();
 		ItemStack item = p.getItemInHand();
 
-		if (stackLootingManager.hasPermission(p))
-			return;
-
 		if (p.isSneaking()) {
 			if (action == Action.RIGHT_CLICK_AIR) {
 				if (item == null || item.getType() == Material.AIR)
@@ -50,6 +47,9 @@ public class StackLootingEvent implements Listener {
 					return;
 
 				if (item.getType().name().toLowerCase().contains("sword"))
+					return;
+				
+				if (stackLootingManager.hasPermission(p))
 					return;
 
 				stackLootingManager.stackLooting(p, item);
