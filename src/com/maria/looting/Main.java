@@ -49,7 +49,6 @@ public class Main extends JavaPlugin {
 		new ConvertLootingCommand(this);
 		new LootingEvents(this);
 		new StackLootingEvent(this);
-		new DefaultMobEvent(this);
 
 		if (Hooks.hookAtlasSpawners())
 			new AtlasMobEvent(this);
@@ -60,8 +59,9 @@ public class Main extends JavaPlugin {
 		else if (Hooks.hookYSpawners()) {
 
 		} else if (Hooks.hookYSpawnersV2()) {
-		}
 
+		} else if (Hooks.noHooks())
+			new DefaultMobEvent(this);
 	}
 
 	private void loadingObjects() {

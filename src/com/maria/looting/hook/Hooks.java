@@ -40,4 +40,11 @@ public class Hooks {
 		return false;
 	}
 
+	public static boolean noHooks() {
+		if (!hookAtlasSpawners() || !hookStormSpawners() || !hookYSpawners() || !hookYSpawnersV2())
+			return true;
+
+		return false;
+	}
+
 }

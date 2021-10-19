@@ -1,5 +1,5 @@
 name: MaLootin
-version: 1.0.6
+version: 1.0.7
 main: com.maria.looting.Main
 author: [Maria_BR]
 commands:
