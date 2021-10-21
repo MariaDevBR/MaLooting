@@ -84,7 +84,7 @@ public class Main extends JavaPlugin {
 
 	@SuppressWarnings("deprecation")
 	private void checkUpdate() {
-		updateCheck = new UpdateCheck(this, 94064);
+		updateCheck = new UpdateCheck(this, 96829);
 		if (updateCheck.getUpdateCheckerResult().equals(UpdateCheck.UpdateCheckerResult.OUT_DATED)) {
 			updateCheck.messageOutOfDated(Bukkit.getConsoleSender());
 			new UpdateEvent(this);
