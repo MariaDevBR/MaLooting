@@ -14,14 +14,18 @@ import com.maria.looting.listeners.DefaultMobEvent;
 import com.maria.looting.listeners.LootingEvents;
 import com.maria.looting.listeners.StackLootingEvent;
 import com.maria.looting.listeners.StormMobEvent;
+import com.maria.looting.listeners.UpdateEvent;
 import com.maria.looting.managers.GiveLootingManager;
 import com.maria.looting.managers.LootingManager;
 import com.maria.looting.managers.StackLootingManager;
 import com.maria.looting.models.Extras;
 import com.maria.looting.models.LootingSettings;
 import com.maria.looting.models.Messages;
+import com.maria.looting.utils.checkers.UpdateCheck;
 
 public class Main extends JavaPlugin {
+
+	private UpdateCheck updateCheck;
 
 	private GiveLootingManager giveLootingManager;
 	private StackLootingManager stackLootingManager;
@@ -41,6 +45,7 @@ public class Main extends JavaPlugin {
 		consoleMessage.sendMessage("§6[" + getDescription().getName() + "] §fCriado por §6Maria_BR");
 		loadingObjects();
 		registerFunctions();
+		checkUpdate();
 	}
 
 	private void registerFunctions() {
@@ -75,6 +80,30 @@ public class Main extends JavaPlugin {
 
 		lootingManager = new LootingManager(this);
 		stackLootingManager = new StackLootingManager(this);
+	}
+
+	@SuppressWarnings("deprecation")
+	private void checkUpdate() {
+		updateCheck = new UpdateCheck(this, 94064);
+		if (updateCheck.getUpdateCheckerResult().equals(UpdateCheck.UpdateCheckerResult.OUT_DATED)) {
+			updateCheck.messageOutOfDated(Bukkit.getConsoleSender());
+			new UpdateEvent(this);
+
+		} else
+			Bukkit.getConsoleSender()
+					.sendMessage("§6[" + getDescription().getName() + "] §fNão há nenhuma atualização no momento.");
+
+		Bukkit.getScheduler().scheduleAsyncRepeatingTask(this, () -> {
+			if (updateCheck.getUpdateCheckerResult().equals(UpdateCheck.UpdateCheckerResult.OUT_DATED)) {
+				updateCheck.messageOutOfDated(Bukkit.getConsoleSender());
+
+			}
+		}, 288000, 288000);
+
+	}
+
+	public UpdateCheck getUpdateCheck() {
+		return updateCheck;
 	}
 
 	public GiveLootingManager getGiveLootingManager() {
